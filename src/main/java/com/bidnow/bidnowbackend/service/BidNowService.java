@@ -148,6 +148,4 @@ public class BidNowService {
 
         bidderRepo.saveBiddingAuctionEvent(bidder);
     }
-
-
 }

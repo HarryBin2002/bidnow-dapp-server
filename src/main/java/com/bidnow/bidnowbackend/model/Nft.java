@@ -38,6 +38,14 @@ public class Nft {
         this.ipfsHashMetadata = nftReq.getIpfsHashMetadata();
     }
 
+    public String getNftOwnerAddress() {
+        return nftOwnerAddress;
+    }
+
+    public void setNftOwnerAddress(String nftOwnerAddress) {
+        this.nftOwnerAddress = nftOwnerAddress;
+    }
+
     public String getId() {
         return id;
     }

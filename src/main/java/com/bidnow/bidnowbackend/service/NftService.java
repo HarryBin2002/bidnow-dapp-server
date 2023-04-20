@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class NftService {
-
     @Autowired
     private NftRepo nftRepo;
 

@@ -3,12 +3,10 @@ package com.bidnow.bidnowbackend.model.wrapSMC;
 import org.web3j.abi.datatypes.Function;
 import org.web3j.abi.datatypes.generated.Uint256;
 import org.web3j.crypto.Credentials;
-import org.web3j.ens.EnsResolver;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tx.Contract;
-import org.web3j.tx.TransactionManager;
 import org.web3j.tx.gas.ContractGasProvider;
 
 import java.math.BigInteger;
@@ -25,15 +23,6 @@ public class BidNowSMC extends Contract {
             ContractGasProvider gasProvider
     ) {
         super(contractBinary, contractAddress, web3j, credentials, gasProvider);
-    }
-
-    public RemoteCall<TransactionReceipt> updateStatusAllAuction() {
-        final Function function = new Function(
-                "updateStatusAllAuction",
-                Collections.emptyList(),
-                Collections.emptyList()
-        );
-        return executeRemoteCallTransaction(function);
     }
 
     public RemoteCall<TransactionReceipt> transferAssetAfterAuctionEnd(BigInteger uuid) {

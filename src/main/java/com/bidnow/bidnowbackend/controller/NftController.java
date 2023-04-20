@@ -28,7 +28,4 @@ public class NftController {
             throw new RuntimeException(exception.getMessage());
         }
     }
-
-
-
 }

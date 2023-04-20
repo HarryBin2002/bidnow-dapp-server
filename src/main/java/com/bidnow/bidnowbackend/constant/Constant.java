@@ -8,20 +8,15 @@ public class Constant {
     public final static Long NOT_TRANSFER_ASSET = 0L;
     public final static Long ALREADY_TRANSFER_ASSET = 1L;
 
-
     public final static String SUCCESS = "Success";
     public final static String ERROR = "Error";
     public final static String SOMETHING_WRONG = "Some thing wrong";
-
 
 
     public final static String UPCOMING_AUCTION_STATUS = "UPCOMING_AUCTION";
     public final static String ACTIVE_AUCTION_STATUS = "ACTIVE_AUCTION";
     public final static String ENDED_AUCTION_STATUS = "ENDED_AUCTION";
 
-
-
-    public final static String fundingAddress = "0xDabd9D685eC93F7547A0693d7DD490030D2D4Dd6";
 
     public final static String NftContract = "0x32e3eb37a488208777EB25b95E63B05e60f3DA61";
     public final static String BQKContract = "0x1074bD5d43E0A06634d701b8B5b9A80e33cFadC2";

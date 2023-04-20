@@ -16,9 +16,7 @@ import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.gas.ContractGasProvider;
 import org.web3j.tx.gas.StaticGasProvider;
 
-import java.math.BigInteger;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class Scheduler {
@@ -53,26 +51,10 @@ public class Scheduler {
     );
 
     /***
-     * Update data on-chain by calling updateStatusAllAuction function inside SMC
-     */
-//    @Scheduled(fixedRate = 10000) // 10s
-    public void updateStatusAllAuction() throws Exception {
-        System.out.println("program run in updateStatusAllAuction");
-        RemoteCall<TransactionReceipt> remoteCall = bidNowSMCContract.updateStatusAllAuction();
-
-        TransactionReceipt transactionReceipt = remoteCall.send();
-
-        System.out.println(transactionReceipt.getTransactionHash());
-    }
-
-    /***
      * Update data off-chain
      * Query data in DB and setStatusAuction
      */
-//    @Scheduled(fixedRate = 16000) // 16s
     public void updateStatusAllAuctionOffChain() {
-        System.out.println("program run in updateStatusAllAuctionOffChain");
-
         auctionRepo.updateStatusAllAuctionOffChain();
     }
 
@@ -82,10 +64,7 @@ public class Scheduler {
      * Give it as a parameter to call transferAssetAfterAuctionEnd inside SMC
      * Update data off-chain (ALREADY_TRANSFER_ASSET)
      */
-//    @Scheduled(fixedRate = 18000) // 18s
     public void TransferAssetScheduler() throws Exception {
-
-        System.out.println("program run in TransferAssetScheduler");
 
         List<Auction> auctionList = getAuctionToTransferAsset();
 
@@ -109,12 +88,8 @@ public class Scheduler {
         return auctionRepo.getAuctionToTransferAsset();
     }
 
-
-    // only for testing
-//    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 100000) // 100s
     public void executeCronjob() throws Exception {
-        updateStatusAllAuction();
-
         updateStatusAllAuctionOffChain();
 
         TransferAssetScheduler();
