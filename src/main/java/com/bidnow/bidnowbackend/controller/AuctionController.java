@@ -66,6 +66,18 @@ public class AuctionController {
         }
     }
 
+    @GetMapping("/get-winner-auction")
+    public ResponseData getWinnerAuction(
+        @RequestParam BigInteger uuid
+    ) {
+        try {
+            return new ResponseData(Constant.SUCCESS, auctionService.getWinnerAuction(uuid), "");
+        } catch (Exception exception) {
+            return new ResponseData(Constant.ERROR, Constant.SOMETHING_WRONG);
+        }
+    }
+
+
 
 
 }

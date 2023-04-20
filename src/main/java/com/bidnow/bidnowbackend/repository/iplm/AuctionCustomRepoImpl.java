@@ -3,6 +3,7 @@ package com.bidnow.bidnowbackend.repository.iplm;
 import com.bidnow.bidnowbackend.constant.Constant;
 import com.bidnow.bidnowbackend.dto.response.AuctionDTO;
 import com.bidnow.bidnowbackend.model.Auction;
+import com.bidnow.bidnowbackend.model.Bidder;
 import com.bidnow.bidnowbackend.model.Nft;
 import com.bidnow.bidnowbackend.repository.AuctionCustomRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.support.PageableExecutionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigInteger;
+import java.util.*;
 
 public class AuctionCustomRepoImpl implements AuctionCustomRepo {
 
@@ -118,4 +119,28 @@ public class AuctionCustomRepoImpl implements AuctionCustomRepo {
         return auctionList;
     }
 
+    @Override
+    public String getWinnerAuction(BigInteger uuid) {
+        Query query = new Query();
+        Criteria criteria = Criteria.where("uuid").is(uuid);
+        query.addCriteria(criteria);
+
+        List<Bidder> bidderList = mongoTemplate.find(query, Bidder.class);
+
+        List<Long> bidderOfferedPrices = new ArrayList<>();
+
+        for (Bidder bidder : bidderList) {
+            bidderOfferedPrices.add(bidder.getOfferedPrice());
+        }
+
+        Long maxBidderOfferedPrice = Collections.max(bidderOfferedPrices);
+
+        for (Bidder bidder : bidderList) {
+            if (bidder.getOfferedPrice() == maxBidderOfferedPrice) {
+                return bidder.getBidderAddress();
+            }
+        }
+
+        return null;
+    }
 }

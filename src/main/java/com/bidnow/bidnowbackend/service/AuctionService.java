@@ -24,4 +24,8 @@ public class AuctionService {
         return auctionRepo.findByUuid(uuid).get();
     }
 
+    public String getWinnerAuction(BigInteger uuid) {
+        return auctionRepo.getWinnerAuction(uuid);
+    }
+
 }

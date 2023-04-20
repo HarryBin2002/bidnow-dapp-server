@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 public class Nft {
     @Id
     private String id;
+    private String nftOwnerAddress;
     private String nftContract;
     private Long tokenId;
     private String name;
@@ -16,8 +17,9 @@ public class Nft {
     public Nft() {
     }
 
-    public Nft(String id, String nftContract, Long tokenId, String name, String description, String ipfsHashImage, String ipfsHashMetadata) {
+    public Nft(String id, String nftOwnerAddress, String nftContract, Long tokenId, String name, String description, String ipfsHashImage, String ipfsHashMetadata) {
         this.id = id;
+        this.nftOwnerAddress = nftOwnerAddress;
         this.nftContract = nftContract;
         this.tokenId = tokenId;
         this.name = name;
@@ -27,6 +29,7 @@ public class Nft {
     }
 
     public Nft(NftReq nftReq) {
+        this.nftOwnerAddress = nftReq.getNftOwnerAddress();
         this.nftContract = nftReq.getNftContract();
         this.tokenId = nftReq.getTokenId();
         this.name = nftReq.getName();

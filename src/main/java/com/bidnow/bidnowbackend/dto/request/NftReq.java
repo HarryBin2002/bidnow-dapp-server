@@ -1,12 +1,23 @@
 package com.bidnow.bidnowbackend.dto.request;
 
 public class NftReq {
+    private String nftOwnerAddress;
     private String nftContract;
     private Long tokenId;
     private String name;
     private String description;
     private String ipfsHashImage;
     private String ipfsHashMetadata;
+
+
+
+    public String getNftOwnerAddress() {
+        return nftOwnerAddress;
+    }
+
+    public void setNftOwnerAddress(String nftOwnerAddress) {
+        this.nftOwnerAddress = nftOwnerAddress;
+    }
 
     public String getNftContract() {
         return nftContract;

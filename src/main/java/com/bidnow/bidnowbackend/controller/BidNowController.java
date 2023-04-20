@@ -33,12 +33,12 @@ public class BidNowController {
         }
     }
 
-    @PostMapping("/join-auction")
-    public ResponseData joinAuction(
+    @PostMapping("/bid-auction")
+    public ResponseData bidAuction(
             @RequestParam String transactionHash
     ) {
         try {
-            bidNowService.joinAuction(transactionHash);
+            bidNowService.bidAuction(transactionHash);
             return new ResponseData(Constant.SUCCESS, "");
         } catch (Exception exception) {
             LOGGER.error(exception.getMessage());

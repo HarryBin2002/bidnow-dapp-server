@@ -113,7 +113,7 @@ public class BidNowService {
     }
 
 
-    public void joinAuction(String transactionHash) throws IOException {
+    public void bidAuction(String transactionHash) throws IOException {
         // create Web3j instance
         Web3j web3j = web3j();
 
