@@ -128,7 +128,7 @@ public class BidNowService {
         System.out.println(latestLog.getData());
 
         // get uuid
-        Long uuid = Long.parseLong(latestLog.getData().substring(2, 66), 16);
+        BigInteger uuid = BigInteger.valueOf(Long.parseLong(latestLog.getData().substring(2, 66), 16));
         System.out.println("uuid: " + uuid);
 
         // get bidderAddress
