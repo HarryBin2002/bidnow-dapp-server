@@ -46,19 +46,6 @@
         </dependency>
 
 
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-
-
         <!-- web3 -->
         <dependency>
             <groupId>org.web3j</groupId>
@@ -86,20 +73,6 @@
             <artifactId>console</artifactId>
             <version>${web3j.version}</version>
         </dependency>
-
-
-        <!-- start security -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
-            <version>4.2.1</version>
-        </dependency>
-        <!-- end security -->
-
 
     </dependencies>
 
