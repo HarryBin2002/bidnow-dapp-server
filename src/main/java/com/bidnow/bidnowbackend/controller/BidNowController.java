@@ -6,10 +6,7 @@ import com.bidnow.bidnowbackend.service.BidNowService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/v1/bid-now")
@@ -20,6 +17,7 @@ public class BidNowController {
     @Autowired
     private BidNowService bidNowService;
 
+    @CrossOrigin
     @PostMapping("/create-new-auction")
     public ResponseData createNewAuction(
             @RequestParam String transactionHash

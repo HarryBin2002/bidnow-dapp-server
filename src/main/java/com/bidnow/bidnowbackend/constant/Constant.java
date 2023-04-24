@@ -21,7 +21,7 @@ public class Constant {
 
     public final static String NftContract = "";
     public final static String BQTContract = "";
-    public final static String BidNowContract = "0x5251f3e1395C294e4195faD1285dd9140F88406b";
+    public final static String BidNowContract = "0x12e148c42263a0D8624A16cC9d69D71c683f9BA5";
 
 
     public final static String NftContractBinary = "";
