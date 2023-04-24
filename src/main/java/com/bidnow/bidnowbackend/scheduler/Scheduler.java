@@ -88,6 +88,7 @@ public class Scheduler {
         return auctionRepo.getAuctionToTransferAsset();
     }
 
+
 //    @Scheduled(fixedRate = 100000) // 100s
     public void executeCronjob() throws Exception {
         updateStatusAllAuctionOffChain();

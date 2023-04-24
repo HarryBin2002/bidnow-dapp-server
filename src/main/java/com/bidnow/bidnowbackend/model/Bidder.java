@@ -2,19 +2,17 @@ package com.bidnow.bidnowbackend.model;
 
 import org.springframework.data.annotation.Id;
 
-import java.math.BigInteger;
-
 public class Bidder {
     @Id
     private String id;
     private String bidderAddress;
     private Long offeredPrice;
-    private BigInteger uuid;
+    private Long uuid;
 
     public Bidder() {
     }
 
-    public Bidder(String bidderAddress, Long offeredPrice, BigInteger uuid) {
+    public Bidder(String bidderAddress, Long offeredPrice, Long uuid) {
         this.bidderAddress = bidderAddress;
         this.offeredPrice = offeredPrice;
         this.uuid = uuid;
@@ -44,11 +42,11 @@ public class Bidder {
         this.offeredPrice = offeredPrice;
     }
 
-    public BigInteger getUuid() {
+    public Long getUuid() {
         return uuid;
     }
 
-    public void setUuid(BigInteger uuid) {
+    public void setUuid(Long uuid) {
         this.uuid = uuid;
     }
 }
