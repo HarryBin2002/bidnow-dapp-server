@@ -30,10 +30,12 @@ public class AuctionCustomRepoImpl implements AuctionCustomRepo {
     @Override
     public Page<AuctionDTO> getListAuctionFromStatus(Pageable pageable, String statusAuction) throws Exception {
         Query query = new Query();
-        Criteria criteria = Criteria.where("statusAuction").is(statusAuction);
-        query.addCriteria(criteria);
 
-        long count = mongoTemplate.count(query, Auction.class);
+        if (statusAuction != null) {
+            query.addCriteria(Criteria.where("statusAuction").is(statusAuction));
+        }
+
+        Long count = mongoTemplate.count(query, Auction.class);
 
         int startRecord = pageable.getPageNumber() * pageable.getPageSize();
         query.skip(startRecord);
@@ -45,15 +47,11 @@ public class AuctionCustomRepoImpl implements AuctionCustomRepo {
 
         for (Auction auction : auctionList) {
             Query query1 = new Query();
-            Criteria criteria1 = Criteria.where("nftContract").is(auction.getNftContract());
+            Criteria criteria1 = Criteria.where("nftContract").regex(auction.getNftContract(), "i");
             Criteria criteria2 = Criteria.where("tokenId").is(auction.getTokenId());
             query1.addCriteria(criteria1.andOperator(criteria2));
 
             Nft nft = mongoTemplate.findOne(query1, Nft.class);
-
-            if (nft == null) {
-                throw new Exception(Constant.SOMETHING_WRONG);
-            }
 
             AuctionDTO auctionDTO = new AuctionDTO(auction);
 
